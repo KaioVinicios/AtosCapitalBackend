@@ -17,7 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/daily_sale/', include('apps.daily_sale.urls')),
+
+    #  Autenticação
+    path('api/auth/', include('apps.authentication.urls')),
 ]
