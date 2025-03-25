@@ -8,13 +8,12 @@ from django.http import JsonResponse
 from apps.enterprise.models import Enterprise
 from apps.branche.models import Branche
 from apps.daily_sale.models import DailySale
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import SessionAuthentication
-
 
 @api_view(["POST"])
-# @permission_classes([SessionAuthentication])
-# @authentication_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
+@authentication_classes([JWTAuthentication])
 def show_daily_sales_by_date(request, enterprise_url):
 
     enterprise = get_object_or_404(Enterprise, url_name=enterprise_url)
