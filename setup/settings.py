@@ -58,9 +58,9 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Tempo de expiração do token de acesso
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # Tempo de expiração do token de atualização
-    'AUTH_HEADER_TYPES': ('Bearer',),  # Define que o token será passado no formato "Bearer <token>"
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     
+    'AUTH_HEADER_TYPES': ('Bearer',),  
 }
 
 MIDDLEWARE = [
@@ -101,6 +101,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'atos_db': {
+        'ENGINE': 'mssql',
+        'NAME': 'dbproinfo',
+        'USER': environ.get("USER_EXTERNAL_DATABASE"),
+        'PASSWORD': environ.get("PASSWORD_EXTERNAL_DATABASE"),
+        'HOST': 'aquidaba',  # Configuration present in freetds.conf
+        'PORT': '',  # Configuration present in freetds.conf
+        'OPTIONS': {
+            'driver': 'FreeTDS',
+            'tds_version': '7.4',  
+        }
     }
 }
 
