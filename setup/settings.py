@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from os import environ
 from datetime import timedelta
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -99,8 +102,12 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'freedb_django_atos',           
+        'USER': environ.get("USER_EXTERNAL_DATABASE"),
+        'PASSWORD': environ.get("PASSWORD_EXTERNAL_DATABASE"),
+        'HOST': environ.get("HOST_EXTERNAL_DATABASE"), 
+        'PORT': '3306',
     },
     'atos_db': {
         'ENGINE': 'mssql',
