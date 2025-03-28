@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "INSECURE")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://atoscapitalbackend.onrender.com']
+ALLOWED_HOSTS = ['atoscapitalbackend.onrender.com']
 
 
 # Application definition
