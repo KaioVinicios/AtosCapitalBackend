@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "INSECURE")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['atoscapitalbackend.onrender.com']
+ALLOWED_HOSTS = ['atoscapitalbackend.onrender.com', 'atos-capital-backend-docker.onrender.com']
 
 
 # Application definition
