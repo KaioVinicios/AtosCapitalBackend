@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "INSECURE")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['atoscapitalbackend.onrender.com', 'atos-capital-backend-docker.onrender.com']
+ALLOWED_HOSTS = ['atos-capital-backend-docker.onrender.com']
 
 
 # Application definition
@@ -117,11 +117,10 @@ DATABASES = {
         'NAME': 'dbproinfo',
         'USER': os.environ.get("USER_EXTERNAL_DATABASE"),
         'PASSWORD': os.environ.get("PASSWORD_EXTERNAL_DATABASE"),
-        'HOST': 'aquidaba',  # Configuration present in freetds.conf
-        'PORT': '',  # Configuration present in freetds.conf
+        'HOST': 'aquidaba',  # Configuration present in freetds.conf (aquidaba.infonet.com.br)
+        'PORT': '',  # Configuration present in freetds.conf (1433)
         'OPTIONS': {
             'driver': 'FreeTDS',
-            'tds_version': '7.4',  
         }
     }
 }

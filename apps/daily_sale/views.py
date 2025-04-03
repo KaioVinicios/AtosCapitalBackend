@@ -24,19 +24,19 @@ def show_daily_sales_by_date(request):
     response_data = {
         "branches": [
             {
-                "name": branch['nmfilial'],  # Nome da filial
-                "cnpj": branch['nrcnpj'],   # CNPJ da filial
+                "name": branch['nmfilial'],  
+                "cnpj": branch['nrcnpj'],   
             }
             for branch in unique_branches
         ],
         "sales": [
             {
-                "id": sale.idvendas,        # ID da venda
-                "cnpj": sale.nrcnpj,        # CNPJ
-                "branche_name": sale.nmfilial,  # Nome da filial
-                "date": sale.dtvenda,       # Data da venda
-                "value": float(sale.vlvenda) if sale.vlvenda is not None else None,  # Valor da venda (convertido para float)
-                "goal": float(sale.txmeta) if sale.txmeta is not None else None,    # Meta (convertido para float)
+                "id": sale.idvendas,        
+                "cnpj": sale.nrcnpj,        
+                "branche_name": sale.nmfilial,
+                "date": sale.dtvenda,       
+                "value": float(sale.vlvenda) if sale.vlvenda is not None else None,  
+                "goal": float(sale.txmeta) if sale.txmeta is not None else None,    
             }
             for sale in sales
         ],

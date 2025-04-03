@@ -1,6 +1,5 @@
 FROM python:3.13.2-slim
 
-# Instala dependências do sistema necessárias para FreeTDS e ODBC
 RUN apt-get update && apt-get install -y \
   unixodbc \
   unixodbc-dev \
@@ -12,6 +11,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 COPY . /app
+
+COPY config/freetds.conf /etc/freetds/freetds.conf
 
 RUN pip install --no-cache-dir -r requirements.txt
 
