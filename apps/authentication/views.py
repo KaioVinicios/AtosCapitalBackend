@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from apps.employee.models import EmployeeUser
 
-# Create your views here.
+
+@api_view(["GET"])
+def get_registred_whatsapp_numbers(request):
+    whatsapp_numbers_list = EmployeeUser.objects.values_list(
+        "whatsapp_number", flat=True
+    )
+
+    data = {"whatsapp_numbers": list(whatsapp_numbers_list)}
+
+    return JsonResponse(data)
