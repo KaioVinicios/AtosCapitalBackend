@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_atos',           
+        'NAME': os.environ.get("INTERNAL_DATABASE_NAME"), # New, not tested, need add to Render's enviroments too.
         'USER': os.environ.get("USER_INTERNAL_DATABASE"),
         'PASSWORD': os.environ.get("PASSWORD_INTERNAL_DABATASE"),
         'HOST': os.environ.get("HOST_INTERNAL_DATABASE"),
